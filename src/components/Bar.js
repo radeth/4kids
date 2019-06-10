@@ -4,27 +4,37 @@ import {
   Toolbar,
   Typography,
   InputBase,
+  Box,
   makeStyles,
-  Button
+  Button,
+  Grid
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import QuestionIcon from "@material-ui/icons/ContactSupport";
+import Person from "@material-ui/icons/Person";
 import logo from "./../img/logo.png";
 
-const mainOrangeColor = "orange";
 const useStyles = makeStyles(theme => ({
   bar: {
     backgroundColor: "white"
   },
   img: {
     height: "auto",
-    width: "20%"
+    width: "100%"
   },
   searchButton: {
-    backgroundColor: mainOrangeColor
+    backgroundColor: "orange",
+    width: "100%"
   },
   questionIcon: {
     color: "silver"
+  },
+  personIcon: {
+    color: "green"
+  },
+  logOutButton: {
+    color: "orange",
+    textDecoration: "none"
   }
 }));
 export default function Bar() {
@@ -33,16 +43,37 @@ export default function Bar() {
     <div>
       <AppBar className={styles.bar} position="static">
         <Toolbar>
-          <a src="#">
-            <img src={logo} alt="logo" className={styles.img} />
-          </a>
-          <Button variant="contained" className={styles.searchButton}>
-            <SearchIcon className={styles.searchIcon} />
-            Wyszukaj
-          </Button>
-          <a>
-            <QuestionIcon className={styles.questionIcon} />
-          </a>
+          <Grid container alignItems="center">
+            <Grid item xs={3}>
+              <a href="#">
+                <img src={logo} alt="logo" className={styles.img} />
+              </a>
+            </Grid>
+            <Grid item xs={3}>
+              <Button variant="contained" className={styles.searchButton}>
+                <SearchIcon className={styles.searchIcon} />
+                <Typography variant="button">Wyszukaj</Typography>
+              </Button>
+            </Grid>
+            <Grid item xs={1}>
+              <a href="#">
+                <QuestionIcon className={styles.questionIcon} />
+              </a>
+            </Grid>
+            <Grid item xs={1}>
+              <a href="#">
+                <Person className={styles.personIcon} />
+              </a>
+            </Grid>
+            <Grid item xs={1}>
+              <Typography>
+                <a className={styles.logOutButton} href="#">
+                  {" "}
+                  Wyloguj się{" "}
+                </a>
+              </Typography>
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
     </div>
